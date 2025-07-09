@@ -1,0 +1,1 @@
+BUCKET_NAME='mlops-data4'
