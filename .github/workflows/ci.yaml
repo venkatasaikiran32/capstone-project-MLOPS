@@ -30,12 +30,16 @@ jobs:
       - name: run pipeline
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.CAPSTONE_TEST }}
         run: |
           dvc repro
 
       - name: Run model tests
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.CAPSTONE_TEST }}
         run: |
           python -m unittest tests/test_model.py
 
@@ -43,10 +47,16 @@ jobs:
         if: success()
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
-        run: python scripts/promote_model.py
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.CAPSTONE_TEST }}
+        run: |
+          python scripts/promote_model.py
 
       - name: Run Flask app tests
         if: success()
         env:
           CAPSTONE_TEST: ${{ secrets.CAPSTONE_TEST }}
-        run: python -m unittest tests/test_flask_app.py
+          MLFLOW_TRACKING_USERNAME: ${{ secrets.CAPSTONE_TEST }}
+          MLFLOW_TRACKING_PASSWORD: ${{ secrets.CAPSTONE_TEST }}
+        run: |
+          python -m unittest tests/test_flask_app.py
