@@ -2,7 +2,6 @@
 import numpy as np
 import pandas as pd
 pd.set_option('future.no_silent_downcasting', True)
-
 import os
 from sklearn.model_selection import train_test_split
 import yaml
@@ -76,12 +75,12 @@ def main():
         test_size = params['data_ingestion']['test_size']
         # test_size = 0.2
         
-        #df = load_data(data_url='https://github.com/venkatasaikiran32/dataset-mlops/blob/main/data.csv')
-        access_key=os.getenv('AWS_ACCESS_KEY')
-        secret_key=os.getenv('AWS_SECRET_KEY')  
-        bucket_name=BUCKET_NAME
-        s3 = s3_connection.s3_operations(bucket_name, access_key, secret_key)
-        df = s3.fetch_file_from_s3("data.csv")
+        df = load_data(data_url='https://github.com/venkatasaikiran32/dataset-mlops/raw/main/data.csv')
+        #access_key=os.getenv('AWS_ACCESS_KEY')
+        #secret_key=os.getenv('AWS_SECRET_KEY')  
+        #bucket_name=BUCKET_NAME
+        #s3 = s3_connection.s3_operations(bucket_name, access_key, secret_key)
+        #df = s3.fetch_file_from_s3("data.csv")
 
 
 
