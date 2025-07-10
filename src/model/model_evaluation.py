@@ -26,7 +26,7 @@ repo_owner = "venkatasaikiran32"
 repo_name = "capstone-project-MLOPS"
 
 # Set up MLflow tracking URI
-#mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
+mlflow.set_tracking_uri(f'{dagshub_url}/{repo_owner}/{repo_name}.mlflow')
 # -------------------------------------------------------------------------------------
 
 # Below code block is for local use
