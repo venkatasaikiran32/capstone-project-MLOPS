@@ -6,6 +6,10 @@ import logging
 from src.logger import logging
 import os
 import dagshub
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 import warnings
 warnings.simplefilter("ignore", UserWarning)
